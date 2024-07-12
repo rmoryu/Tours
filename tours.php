@@ -1,3 +1,23 @@
+<?php
+if(isset($_POST['flag'])){
+    // process
+    require_once("connections/dbset.php");
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $tel = $_POST['tel'];
+    $address = $_POST['address'];
+    $message = $_POST['message'];
+    $SQLstring = sprintf("INSERT INTO feedback (name, tel, email, address, message) VALUES ('%s', '%s', '%s', '%s', '%s')", $name, $tel, $email, $address, $message);
+    $result = $db_link -> query($SQLstring);
+
+    if($result){
+        echo "<script>alert('Thank you, your feedback has been received. We will contact you as soon as possible.');</script>";
+    }else{
+        echo "<scipt>alert('The information is incorrect. Please use another method to contact us.')";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -525,22 +545,23 @@
 
         <div class="contact-us_right">
             <h1>Contact us</h1>
-            <form action="" method="post">
+            <form action="tours.php" method="post" name="contact-us" id="contact-us">
                 <label for="name">Your Name</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" required>
 
                 <label for="email">Your Email</label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" required>
 
-                <label for="telephone">Your Phone Number</label>
-                <input type="number" name="telephone" id="telephone">
+                <label for="tel">Your Phone Number</label>
+                <input type="number" name="tel" id="tel">
 
                 <label for="address">Your Address</label>
                 <input type="text" name="address" id="address">
 
                 <label for="message">Your Message</label>
-                <textarea name="message" id="message" rows="2" cols="50"></textarea>
+                <textarea name="message" id="message" rows="2" cols="50"></textarea required>
 
+                <input type="hidden" name="flag" id="flag" value="contact-us">
                 <input type="submit" value="Submit">
             </form>
         </div>
