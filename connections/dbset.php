@@ -1,11 +1,3 @@
-<!-- <?php
-// PDO SQL connection
-// $dsn = "mysql:host = localhost; dbname = tours; charset = utf8";
-// $user = "tours";
-// $password = "1234";
-// $link = new PDO($dsn, $user, $password);
-?> -->
-
 <?php
 //PDO sql 連線指令
 // $db_host = "mysql:host=localhost;dbname=lincan;charset=utf8";
